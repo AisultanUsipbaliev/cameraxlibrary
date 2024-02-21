@@ -1,0 +1,10 @@
+<resources>
+    <plurals name="media_count">
+        <item quantity="zero">%1$d Медиафайлов</item>
+        <item quantity="one">%1$d Медиафайл</item>
+        <item quantity="two">%1$d Медиафайла</item>
+        <item quantity="few">%1$d Медиафайла</item>
+        <item quantity="many">%1$d Медиафайлов</item>
+        <item quantity="other">%1$d Медиафайлов</item>
+    </plurals>
+</resources>

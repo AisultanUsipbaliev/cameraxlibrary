@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <!-- Миниатюра изображения или видео -->
+    <ImageView
+        android:id="@+id/thumbnail"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:scaleType="centerCrop" />
+
+    <!-- Чекбокс в верхнем правом углу -->
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|top"
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="2dp" />
+
+    <!-- Продолжительность видео в нижнем правом углу -->
+    <TextView
+        android:id="@+id/videoDuration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="4dp"
+        android:layout_marginRight="4dp"
+        android:background="@drawable/rounded_background"
+        android:paddingHorizontal="5dp"
+        android:paddingVertical="2dp"
+        android:text="00:00"
+        android:visibility="invisible"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp" />
+</FrameLayout>
