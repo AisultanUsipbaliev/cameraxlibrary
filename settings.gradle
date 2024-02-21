@@ -16,4 +16,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "cameraxlibrary"
 include ':app'
-include ':cameraxapp'
+include ':cameraxlibrary'

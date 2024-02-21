@@ -1,18 +1,19 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
+    id 'maven-publish'
     id 'org.jetbrains.kotlin.android'
 }
 
 android {
-    namespace 'com.avrora.telecom.exampleuselibrary'
+    namespace 'com.avrora.telecom.cameraxlibrary'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.avrora.telecom.exampleuselibrary"
+//        applicationId "com.avrora.telecom.cameraxlibrary"
         minSdk 26
-        targetSdk 34
-        versionCode 1
-        versionName "1.0"
+//        targetSdk 34
+//        versionCode 1
+//        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -44,9 +45,24 @@ android {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
     }
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
+
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    def camerax_version = "1.2.2"
+    implementation "androidx.camera:camera-core:${camerax_version}"
+    implementation "androidx.camera:camera-camera2:${camerax_version}"
+    implementation "androidx.camera:camera-lifecycle:${camerax_version}"
+    implementation "androidx.camera:camera-video:${camerax_version}"
+    implementation "androidx.camera:camera-view:${camerax_version}"
+    implementation "androidx.camera:camera-extensions:${camerax_version}"
 
     implementation 'androidx.core:core-ktx:1.12.0'
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.7.0'
@@ -63,7 +79,20 @@ dependencies {
     androidTestImplementation 'androidx.compose.ui:ui-test-junit4'
     debugImplementation 'androidx.compose.ui:ui-tooling'
     debugImplementation 'androidx.compose.ui:ui-test-manifest'
+}
 
-//    implementation 'com.github.AisultanUsipbaliev:cameraxlibrary:1.0.1'
-    implementation project(':cameraxlibrary')
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'com.github.AisultanUsipbaliev'
+            artifactId = 'cameraxlibrary'
+            version = "1.0.1"
+            pom {
+                description = 'First release'
+            }
+        }
+    }
+    repositories {
+        mavenLocal()
+    }
 }
