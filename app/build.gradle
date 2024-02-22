@@ -3,6 +3,12 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
+allprojects {
+    repositories {
+        maven { url 'https://jitpack.io' }
+    }
+}
+
 android {
     namespace 'com.avrora.telecom.exampleuselibrary'
     compileSdk 34
