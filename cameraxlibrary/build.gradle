@@ -83,11 +83,12 @@ dependencies {
 
 publishing {
     publications {
-        maven(MavenPublication) {
-            from components.java
-            groupId 'com.avrora.telecom.cameraxlibrary' // Замените на ваш пакет
-            artifactId 'cameraxlibrary' // Название вашей библиотеки
-            version '1.0.3' // Версия вашей библиотеки
+        release(MavenPublication) { // Имя публикации 'release'
+            from components.findByName("release") // Использование компонента 'release'
+
+            groupId 'com.avrora.telecom.cameraxlibrary'
+            artifactId 'cameraxlibrary'
+            version '1.0.4'
         }
     }
 }
