@@ -101,7 +101,7 @@ publishing {
 
                 groupId 'com.avrora.telecom.cameraxlibrary'
                 artifactId 'cameraxlibrary'
-                version '1.0.8'
+                version '1.0.9'
             }
         }
     }

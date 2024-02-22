@@ -19,7 +19,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.provider.MediaStore
-import android.provider.OpenableColumns
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.ImageCapture
 import androidx.camera.video.Recorder
@@ -49,16 +48,13 @@ import androidx.camera.video.QualitySelector
 import androidx.camera.video.VideoRecordEvent
 import androidx.core.content.PermissionChecker
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.avrora.telecom.cameraxlibrary.databinding.ActivityMainBinding
-import com.avrora.telecom.cameraxlibrary.VideoThumbnailAdapter
-import java.io.File
-import java.nio.ByteBuffer
+import com.avrora.telecom.cameraxlibrary.databinding.ActivityMainCameraBinding
 import java.text.SimpleDateFormat
 import java.util.Locale
 
 typealias LumaListener = (luma: Double) -> Unit
 
-class MainActivity : AppCompatActivity(), VideoThumbnailAdapter.OnThumbnailUpdateListener {
+class MainActivityCamera : AppCompatActivity(), VideoThumbnailAdapter.OnThumbnailUpdateListener {
     private val activityResultLauncher =
         registerForActivityResult(
             ActivityResultContracts.RequestMultiplePermissions()
@@ -81,7 +77,7 @@ class MainActivity : AppCompatActivity(), VideoThumbnailAdapter.OnThumbnailUpdat
             }
         }
 
-    private lateinit var viewBinding: ActivityMainBinding
+    private lateinit var viewBinding: ActivityMainCameraBinding
 
     private var imageCapture: ImageCapture? = null
 
@@ -117,7 +113,7 @@ class MainActivity : AppCompatActivity(), VideoThumbnailAdapter.OnThumbnailUpdat
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewBinding = ActivityMainBinding.inflate(layoutInflater)
+        viewBinding = ActivityMainCameraBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
         // Request camera permissions
@@ -458,7 +454,7 @@ class MainActivity : AppCompatActivity(), VideoThumbnailAdapter.OnThumbnailUpdat
             .prepareRecording(this, mediaStoreOutputOptions)
             .apply {
                 if (PermissionChecker.checkSelfPermission(
-                        this@MainActivity,
+                        this@MainActivityCamera,
                         Manifest.permission.RECORD_AUDIO
                     ) ==
                     PermissionChecker.PERMISSION_GRANTED
@@ -498,7 +494,7 @@ class MainActivity : AppCompatActivity(), VideoThumbnailAdapter.OnThumbnailUpdat
                             val thumbnailBitmap = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
                                 getVideoThumbnail(absolutePath)
                             } else {
-                                getVideoThumbnailFromUri(this@MainActivity, videoUri)
+                                getVideoThumbnailFromUri(this@MainActivityCamera, videoUri)
                             }
 
                             mediaFiles.add(
