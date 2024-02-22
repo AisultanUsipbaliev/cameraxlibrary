@@ -81,14 +81,28 @@ dependencies {
     debugImplementation 'androidx.compose.ui:ui-test-manifest'
 }
 
+//publishing {
+//    publications {
+//        release(MavenPublication) { // Имя публикации 'release'
+//            from components.findByName("release") // Использование компонента 'release'
+//
+//            groupId 'com.avrora.telecom.cameraxlibrary'
+//            artifactId 'cameraxlibrary'
+//            version '1.0.5'
+//        }
+//    }
+//}
+
 publishing {
     publications {
-        release(MavenPublication) { // Имя публикации 'release'
-            from components.findByName("release") // Использование компонента 'release'
+        release(MavenPublication) {
+            afterEvaluate {
+                from components.release
 
-            groupId 'com.avrora.telecom.cameraxlibrary'
-            artifactId 'cameraxlibrary'
-            version '1.0.4'
+                groupId 'com.avrora.telecom.cameraxlibrary'
+                artifactId 'cameraxlibrary'
+                version '1.0.6'
+            }
         }
     }
 }
