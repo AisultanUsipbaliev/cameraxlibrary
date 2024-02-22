@@ -10,7 +10,7 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        mavenLocal()
+//        mavenLocal()
 //        maven { url '/home/aisultan/.m2/repository' }
         maven { url 'https://jitpack.io' }
     }
